@@ -64,7 +64,7 @@
    
    （1）结构体
    
-
+      ``````
       type PersonInfo struct{
          ID string
          Name string
@@ -81,9 +81,11 @@
 			fmt.Println(“Founf person”,person.Name,”with ID 1234”)
 			}else{
 			fmt.Println("Did not found person with ID 1234.”)
+	``````
 
    5.结构体
    
+      ``````
       type Person struct{
          Id int
          Name string
@@ -93,10 +95,12 @@
    p := new(Person)
    p.id=1
    p.Name=“guagua"
-   p.Age=24	
+   p.Age=24
+   ``````
 
    6.匿名字段
-
+	
+      ``````
       type S struct{
       	a string 
 	      b string
@@ -116,3 +120,4 @@
 
    	b.S.b=“b”给匿名字段S 赋值
    	b.b=10//名字冲突，不同上，不能这样给匿名字段中相同字段赋值
+	``````
