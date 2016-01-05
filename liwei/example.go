@@ -1,16 +1,17 @@
 package main
 
 import (
-	"git.changhong.io/qiniu-study/liwei/stringutils"
+	"./stringutils"
 	"log"
 )
-// test stringutils 
+
+// test stringutils
 func main() {
 
-	log.Println(stringutils.VerifyEmail("contact@idrmfly.com"))
-	log.Println(stringutils.VerifyEmail("contact.liw@idrmfly.com"))
-	log.Println(stringutils.VerifyEmail("contact-liw@idrmfly.com"))
-	log.Println(stringutils.VerifyEmail("contact-liwidrmfly.com"))
-	log.Println(stringutils.VerifyEmail("contact-liw@idrmflycom"))
+	log.Println(stringutils.IsEmail("contact@idrmfly.com"))
+	log.Println(stringutils.IsEmail("contact.liw@idrmfly.com"))
+	log.Println(stringutils.IsEmail("contact-liw@idrmfly.com"))
+	log.Println(stringutils.IsEmail("contact-liwidrmfly.com"))
+	log.Println(stringutils.IsEmail("contact-liw@idrmflycom"))
 
 }
