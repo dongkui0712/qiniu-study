@@ -38,9 +38,9 @@
    
       *字符串赋值*
 
-    （1）var str string //声明一个字符串变量
-    （2）str = "Hi CHANGHONG"// 字符串赋值
-    （3）ch := str[0] //取字符串第一个
+    	（1）var str string //声明一个字符串变量
+    	（2）str = "Hi CHANGHONG"// 字符串赋值
+    	（3）ch := str[0] //取字符串第一个
     
       *字符串操作之遍历*
       
@@ -50,11 +50,12 @@
       ch := str[i]
       fmt.Println(i,ch)
       }
+      
    2.数字类型
    
    3.数组
    
-      [32]byte // 长度为32的数组，每个元为一个字符���
+      [32]byte // 长度为32的数组，每个元为一个字符
       [2*n]struct {x,y int32} // 复杂类型数组
       [1000]*float64 //指针数组
       [3][5]int //二维数组
@@ -62,13 +63,14 @@
    4.map
    
    （1）结构体
-      type PersonInfo struct{
+   
+      	type PersonInfo struct{
 	      ID string
 	      Name string
 	      Address string
 	    }
 
-      var personDB map [string] PersonInfo   //定义一个map
+      	var personDB map [string] PersonInfo   //定义一个map
 	   personDB = make(map[string] personInfo)//生成空map
 	   //往map插入几条数据
 	   personDB[“12345”] = PsersonInfo{“12345”,”jam”,”beijing”}
@@ -80,7 +82,8 @@
 	   }else{
 	   	fmt.Println("Did not found person with ID 1234.”)
 
-   5.结构体：
+   5.结构体
+   
       type Person struct{
          Id int
          Name string
