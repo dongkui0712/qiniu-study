@@ -37,28 +37,36 @@
    1. 字符串
    
       *字符串赋值*
-
+	
+	``````
     	（1）var str string //声明一个字符串变量
     	（2）str = "Hi CHANGHONG"// 字符串赋值
     	（3）ch := str[0] //取字符串第一个
-    
+
+    	``````
+    	
       *字符串操作之遍历*
       
+      ``````
       str := "Hello,CHANGHONG"
       n := len(str)
       for i:= 0;i<n;i++{
       ch := str[i]
       fmt.Println(i,ch)
       }
+      ``````
       
    2.数字类型
    
    3.数组
    
+      ``````
       [32]byte // 长度为32的数组，每个元为一个字符
       [2*n]struct {x,y int32} // 复杂类型数组
       [1000]*float64 //指针数组
       [3][5]int //二维数组
+      
+      ``````
       
    4.map
    
