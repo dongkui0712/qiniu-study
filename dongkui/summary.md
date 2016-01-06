@@ -105,7 +105,6 @@ switch:
 for:
 
 (使用range的类型:	string,array,slice,map,channel)
-=
 
 log:
 error:
