@@ -97,11 +97,8 @@ Day 2:
 
 ##1、内容：
 goto ：
-
 if else:
-
 switch:
-
 for:
 
 (使用range的类型:	string,array,slice,map,channel)
@@ -110,7 +107,6 @@ log:
 error:
 panic:
 
-=
 文件复制：
 
 文件修改：
