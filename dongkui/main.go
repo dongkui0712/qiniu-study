@@ -39,10 +39,7 @@ func main() {
 //
 //	student3 := day2.Student{"c",18,"1"}
 //	student3.SaveInf()
-	stu := day2.GetStu()
-	stu.SaveInf()
 
-	fmt.Println(day2.Students)
 
 
 }
