@@ -6,7 +6,7 @@ import (
 )
 
 //字符串匹配算法
-func StrMatch(s1, s2 string) (index []int, err error) {
+func StrMatchA(s1, s2 string) (index []int, err error) {
 	if !strings.Contains(s1, s2) {
 		err = errors.New("字符串1不包含字符串2!")
 		return nil, err
@@ -32,3 +32,36 @@ func StrMatch(s1, s2 string) (index []int, err error) {
 		return index, err
 	}
 }
+
+func StrMatchB(str, subStr string, result *[]int) {
+	first := strings.Index(str, subStr)
+	if len(*result) > 0 {
+		first = (*result)[len(*result)-1] + first + 1
+	}
+	*result = append(*result, first)
+
+	strs := strings.Split(str, "")
+	strslice := strs[first+1:]
+	strs1 := strings.Join(strslice, "")
+	if strings.Index(strs1, subStr) != -1 {
+		StrMatchB(strs1, subStr, result)
+	}
+
+}
+
+//func FindSubStrIndex(str, subStr string, result *[]int) {
+//
+//	first := strings.Index(str, subStr)
+//
+//	strs := strings.Split(str, "")
+//	strslice := strs[first+1:]
+//	strs1 := strings.Join(strslice, "")
+//	if len(*result) > 0 {
+//		first = (*result)[len(*result)-1] + first + 1
+//	}
+//	*result = append(*result, first)
+//	if strings.Index(strs1, subStr) != -1 {
+//		FindSubStrIndex(strs1, subStr, result)
+//	}
+//
+//}
