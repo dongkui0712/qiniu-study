@@ -5,13 +5,13 @@ import (
 )
 
 func main() {
-	findPrimeNumber(100)
+	findPrimeNumber(1114321)
 }
 
 func findPrimeNumber(n int) {
 	var intIf int = 0
 	var primes []int
-	for i := 1; i < n; i++ {
+	for i := 2; i < n; i++ {
 		is, cIf := isPrime(i)
 		intIf = intIf + cIf
 		if is == true {
