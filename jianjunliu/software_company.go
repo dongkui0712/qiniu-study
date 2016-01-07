@@ -7,6 +7,58 @@ import (
 	"time"
 )
 
+func main() {
+
+	om := &OrderMarket{}
+	om.Init()
+
+	cm := &CoderMarket{}
+	cm.Init()
+
+	totalMoney := 100.0 //单位：w
+
+	for {
+		if totalMoney > 1000.0 || totalMoney < 0 {
+			fmt.Println("创业结束. totalMoney:%v", totalMoney)
+			return
+		}
+
+		fmt.Println("新一轮工作开始")
+		order, err := om.GetOrder()
+		if err != nil {
+			fmt.Println("没有拉到订单，休息一天后继续")
+			time.Sleep(time.Second * 1) //1秒模拟1天
+			totalMoney -= 0.1
+			continue
+		}
+
+		coder, err := cm.GetCoder()
+		if err != nil {
+			fmt.Println("没有找到程序员，退回订单后继续")
+			om.ReturnOrder(order)
+			totalMoney -= order.Money * 2
+			continue
+		}
+
+		software, err := coder.WriteCode(order)
+		if err != nil {
+			fmt.Println("开发出错，公司倒闭")
+			return
+		}
+
+		om.DeliverOrder(order, software)
+		totalMoney += order.Money
+
+		moneyToCoder := order.Money / 10.0
+		coder.GetMoney(moneyToCoder)
+		totalMoney -= moneyToCoder
+
+		fmt.Println("给程序员买盒饭闪了腰，休息两天\n")
+		totalMoney -= 0.1 * 2
+		time.Sleep(time.Second * 2) //1秒模拟1天
+	}
+}
+
 type Order struct {
 	Money float64 //w
 	Name  string
@@ -75,58 +127,6 @@ func (cm *CoderMarket) GetCoder() (coder Coder, err error) {
 	coder = cm.coderPool[index]
 	fmt.Println("success get a order.")
 	return
-}
-
-func main() {
-
-	om := &OrderMarket{}
-	om.Init()
-
-	cm := &CoderMarket{}
-	cm.Init()
-
-	totalMoney := 100.0 //单位：w
-
-	for {
-		if totalMoney > 1000.0 || totalMoney < 0 {
-			fmt.Println("创业结束. totalMoney:%v", totalMoney)
-			return
-		}
-
-		fmt.Println("新一轮工作开始")
-		order, err := om.GetOrder()
-		if err != nil {
-			fmt.Println("没有拉到订单，休息一天后继续")
-			time.Sleep(time.Second * 1) //1秒模拟1天
-			totalMoney -= 0.1
-			continue
-		}
-
-		coder, err := cm.GetCoder()
-		if err != nil {
-			fmt.Println("没有找到程序员，退回订单后继续")
-			om.ReturnOrder(order)
-			totalMoney -= order.Money * 2
-			continue
-		}
-
-		software, err := coder.WriteCode(order)
-		if err != nil {
-			fmt.Println("开发出错，公司倒闭")
-			return
-		}
-
-		om.DeliverOrder(order, software)
-		totalMoney += order.Money
-
-		moneyToCoder := order.Money / 10.0
-		coder.GetMoney(moneyToCoder)
-		totalMoney -= moneyToCoder
-
-		fmt.Println("给程序员买盒饭闪了腰，休息两天\n")
-		totalMoney -= 0.1 * 2
-		time.Sleep(time.Second * 2) //1秒模拟1天
-	}
 }
 
 type SoftWare struct {
