@@ -1,6 +1,5 @@
 package day2
 import (
-	"fmt"
 //	"log"
 //	"errors"
 //	"sort"
