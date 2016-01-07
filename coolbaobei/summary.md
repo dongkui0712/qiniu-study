@@ -21,7 +21,7 @@
    3.熟悉整套开发流程，重点熟悉对github的操作
    
     （1）git clone  远程仓库
-    （2）讲自己新写的加到本地仓库
+    （2）将自己新写的加到本地仓库
     （3）git checkout -b 新分支名 
     （4）git remote
     （5）git remote show origin
@@ -126,3 +126,44 @@
    	b.S.b=“b”给匿名字段S 赋值
    	b.b=10//名字冲突，不同上，不能这样给匿名字段中相同字段赋值
 	``````
+### Golang 控制语句和错误处理
+
+   **goto：**
+
+  调整执行位置、支持函数内部跳转、跳转到当前函数内定义标签
+
+   **if else**   
+   
+   *注意：* 条件表达式没有括号
+
+   switch :
+   
+   支持初始化表达式、默认break、多个分支逗号执行
+
+   **fallthrough ／／进入后面的case进行处理**
+
+   for :
+   ``````
+   三种形式：
+   （1）类似while
+   （2） for int;condition;边界｛
+	｝
+    (3)for range一起使用，完成迭代器的iterator操作 
+       string、array、slice、数组都可以使用
+       某个值不想要时可以选择丢弃 _ 例如 for _,n := range 数组｛
+
+     （迭代、返回值）两种情况用得多 
+    ``````
+    **错误处理**
+
+    defer
+
+    error: 抽象了Error()接口方法
+    panic
+
+
+    ####附加 
+    
+    文件复制、文件修改、限速传输
+    
+    
