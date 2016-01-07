@@ -33,8 +33,8 @@ func (person *Person) ShowInf() error {
 
 func (person *Person) SayPlusTable() error {
 	for i := 1;i < 10;i++{
-		for j := 1;j < 10;j++{
-			fmt.Print(i,"*",j,"=",i*j)
+		for j := 1;j <= i;j++{
+			fmt.Print(i,"*",j,"=",i*j,",")
 		}
 		fmt.Println("")
 	}
