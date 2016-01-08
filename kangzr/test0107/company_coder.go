@@ -53,6 +53,7 @@ func main() {
 		coder.GetMoney(moneyToCoder)
 		totalMoney -= moneyToCoder
 
+		fmt.Println("创业总资金剩余:", totalMoney)
 		fmt.Println("给程序员买盒饭闪了腰，休息两天\n")
 		totalMoney -= 0.1 * 2
 		time.Sleep(time.Second * 2) //1秒模拟1天
@@ -75,7 +76,7 @@ func (om *OrderMarket) Init() {
 	var orderPool []Order
 	for i := 0; i < 10000; i++ {
 		order := Order{
-			Money: float64(rand.Int()%50 + 50),
+			Money: float64(rand.Int()%10 + 10),
 			Name:  "order:" + strconv.Itoa(i),
 		}
 		orderPool = append(orderPool, order)
