@@ -7,7 +7,7 @@ import (
 
 func FindByPone(p string) string {
 	var num string
-	db, err := sql.Open("mysql", "root:12345@tcp(10.3.93.203:3306)/cuc3db?charset=utf8")
+	db, err := sql.Open("mysql", "root:*****@tcp(10.3.***.***:3306)/cuc3db?charset=utf8")
 	if err != nil {
 		panic(err.Error())
 	}
