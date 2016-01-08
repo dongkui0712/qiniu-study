@@ -39,12 +39,15 @@ func main() {
 	fmt.Println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
 	//字符串匹配算法
-	s1 := "sdsdsdsdsdsdsdsddfdfdffgf"
-	s2 := "ds"
-	index, err := test.StrMatch(s1, s2)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(s1, "包含", s2, "位置有:", index)
+	s1 := "helllo world"
+	s2 := "ll"
+//	index, err := test.StrMatch(s1, s2)
+//	if err != nil {
+//		panic(err)
+//	}
+//	fmt.Println(s1, "包含", s2, "位置有:", index)
+	result := make([]int, 0)
+	test.StrMatchB(s1, s2, &result)
+	fmt.Println("result:",result)
 
 }
