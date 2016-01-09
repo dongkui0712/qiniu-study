@@ -1,3 +1,22 @@
+2016-01-08
+
+学习go并发编程基础
+* 并发关键
+  * 调度 充分使用资源
+  * 状态同步 锁
+“Concurrency is not parallelism
+并发不是同时运行，但是能做到同时运行” （时间片）
+* Go并发特性
+  * goroutine
+  Go 可被调度的最小单元 比线程轻量，有自己的栈信息
+  * channel
+  Go 并发消息同步机制 向channel 里写入和读取消息都是原子操作，不可覆盖。
+  当channel不为空，但是被close了，此时channel的状态应该是处于 c不为空 
+  只有channel为空并且被close了才算是 c被close
+  * select 用法类似switch语句，用做channel的同步控制 没个case必须为一个对channel的操作
+
+
+--------------------------------------------------------------
 2016-01-07
 
 学习go接口和面向对象编程

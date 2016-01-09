@@ -1,4 +1,4 @@
-package firstfile
+package chapter1
 
 import "errors"
 
