@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	findPrimeNumber(1114321)
+	findPrimeNumber(1110)
 }
 
 func findPrimeNumber(n int) {
@@ -21,7 +21,7 @@ func findPrimeNumber(n int) {
 	}
 
 	num := int(len(primes) )
-	fmt.Println("num:",num)
+	fmt.Println("素数个数为:",num)
 	fmt.Println("最大素数为:", primes[num-1])
 	fmt.Println("if执行次数:", intIf)
 	//	for _,v := range primes {
