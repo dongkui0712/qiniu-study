@@ -342,3 +342,85 @@
   7.获取下一个订单
   一直到100万投资耗尽，或者公司资产超过1000万，结束创业。
   ```
+#2016-01-08 学习总结
+
+>  今天主要的学习内容是Golang并发编程
+
+>* 为什么需要并发
+>* Golang并发的特点
+>* 如何用Golang做并发
+
+##1.为什么需要并发
+  ```
+  并发主要是为了能充分利用CPU而产生的,例如,一个程序输入的时候,这个时候CPU是空闲着的,
+  为了让CPU在这段时间内也能工作,就产生了并发.
+  ```
+##2.Golang并发的特点
+  ```
+  在Go语言中,通过go关键字可以非常简单的启动一个协程,通过 go 关键字启动协程之后, 
+  主进程并不会等待协程的执行, 而是继续执行直至结束
+  下面举一个简单的例子:
+  var a int=1000
+  for n=1;n<10;n++{
+       go func(){
+          for{
+             if a>0{
+                a--
+             }else{
+                break
+             }
+          }  
+       }()
+  }
+  time.Sleep(time.Second)
+  fmt.Println(a)
+  并发不是同时运行,但能做到同时运行
+  ```
+##3.如何用Golang做并发
+  ```
+  在golang中,是通过goroutine,chanel,select这三种机制来实现并发的
+  goroutine
+  是go里面被调度的最小单位你可以像使用线程那样使用goroutine
+  channel
+  channel是go里面消息同步的机制,往channel里面丢消息和取消息是一个原子操作
+  msgChan := make(msgChan,1)
+  go func(){
+    for{
+          msg :=generateMsg()//往channel里面丢消息
+          msgChan <- msg
+       }
+    }
+    for{
+       msg :=<-msgChan//往channel里面拿消息
+       processMsg(msg)
+  }
+  各种情况下从channel读消息的表现
+  |          |      空       |      不为空     |        关闭         |
+  |----------| ------------- |:-------------: |:-------------------:|
+  |a:=<-c    |    pending    |    a==true     | a==false           |
+  |a,ok:=<-c |    pending    |a==true,ok==true| a==false,ok==false |
+  select
+  select看起来像switch,用来做channel的同步控制
+  select{
+      case <- chan1:
+      case a :=<- chan2;
+          processA(a)
+      default:
+          fmt.Println("chan1和chan2都没有准备好")
+  }
+  ```
+##4.练习题
+  ```
+  5.1用 https://godoc.org/sync/atomic 和 https://godoc.org/sync/atomic 修改第五页slide的实现(2个版本)
+  5.2修改pc1.go，用WaitGroup来等待执行者退出
+  5.3写一个taskpool的package
+      目标：同时最多只能运行n个函数
+      type RunningPool struct {
+           ...
+      }
+      func NewRunningPool(n int) *RunningPool {
+      }
+      func (rp *RunningPool) Run(func() {}) {
+      }
+      用taskpool重写生产者消费者的main函数
+  ```
