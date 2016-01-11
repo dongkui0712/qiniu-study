@@ -1,8 +1,8 @@
 package main
 import (
-	"github.com/qiniu-study/dongkui/day2"
 	"log"
 	"fmt"
+	"github.com/dongkui0712/qiniu-study/dongkui/day2"
 )
 
 func main() {
