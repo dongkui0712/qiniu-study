@@ -1,6 +1,6 @@
 package main
 import "fmt"
-import "./firstfile"
+
 
 func main()  {
 	i,e := firstfile.Cheng(8,7)
